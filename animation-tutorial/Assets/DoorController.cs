@@ -3,21 +3,22 @@ using System.Collections;
 
 public class DoorController : MonoBehaviour {
 
-	Animator animator;
+	public Animator animator;
+	public Rect openDoorRectangle;
+	public Rect closeDoorRectangle;
 
-	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
 	}
 	
 	void OnGUI () {
-		if (GUILayout.Button("Open Door"))
+		if (GUI.Button(openDoorRectangle, "Open Door"))
 		{
 			animator.SetInteger ("Door Close", 0);
 			animator.SetInteger ("Door Open", 1);
 		}
 
-		if (GUILayout.Button("Close Door"))
+		if (GUI.Button(closeDoorRectangle, "Close Door"))
 		{
 			animator.SetInteger ("Door Close", 1);
 			animator.SetInteger ("Door Open", 0);
